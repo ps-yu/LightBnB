@@ -44,8 +44,8 @@ A simple multi-page Airbnb clone that uses a server-side Javascript to display t
   * `database.js` is responsible for all queries to the database. It doesn't currently connect to any database, all it does is return data from `.json` files.
 
   ## Getting Started
-    Create a new repository using this repository as a template.
-    Clone your repository onto your local device.
-    Install dependencies using the npm install command.
-    Start the web server using the npm run local command on LightBnB_WebApp-master directory.
-    Go to http://localhost:3000/ in your browser
+      Create a new repository using this repository as a template.
+      Clone your repository onto your local device.
+      Install dependencies using the npm install command.
+      Start the web server using the npm run local command on LightBnB_WebApp-master directory.
+      Go to http://localhost:3000/ in your browser
