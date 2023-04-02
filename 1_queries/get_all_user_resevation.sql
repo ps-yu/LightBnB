@@ -6,6 +6,3 @@ WHERE reservations.guest_id = 1
 GROUP BY properties.id, reservations.id
 ORDER BY reservations.start_date
 LIMIT 10;
-
-
-
