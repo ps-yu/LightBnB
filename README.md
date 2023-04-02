@@ -49,3 +49,8 @@ A simple multi-page Airbnb clone that uses a server-side Javascript to display t
       Install dependencies using the npm install command.
       Start the web server using the npm run local command on LightBnB_WebApp-master directory.
       Go to http://localhost:3000/ in your browser
+
+  ## Project Dependencies
+  
+      node-postgres
+      Node 5.10.x or above
