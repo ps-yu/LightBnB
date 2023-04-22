@@ -120,22 +120,23 @@ exports.getAllReservations = getAllReservations;
 const getAllProperties = (options, limit = 10) => {
 
   const queryParams = [];
-
+  console.log(options);
   let queryString = `
    SELECT properties.*, avg(property_reviews.rating) as average_rating
    FROM properties
-   JOIN property_reviews ON properties.id = property_id
+   LEFT JOIN property_reviews ON properties.id = property_id
    WHERE 1=1
    `;
 
   if (options.city) {
-    queryParams.push(`%${options.city.substring(1, options.city.length - 1)}%`);
+    console.log(options.city)
+    queryParams.push(`%${options.city}%`);
     queryString += `AND city LIKE $${queryParams.length} `;
   }
 
   if (options.owner_id) {
-    queryParams.push(`%${options.owner_id}%`);
-    queryString += `AND owner_id LIKE $${queryParams.length} `;
+    queryParams.push(options.owner_id);
+    queryString += `AND owner_id = $${queryParams.length} `;
   }
 
   if (options.minimum_price_per_night) {
@@ -163,7 +164,8 @@ const getAllProperties = (options, limit = 10) => {
    ORDER BY cost_per_night
    LIMIT $${queryParams.length};
    `;
-
+  console.log(queryString)
+  console.log(queryParams)
   return pool.query(queryString, queryParams).then((res) => res.rows);
 
 };
@@ -201,7 +203,7 @@ const addProperty = function (property) {
       property.description,
       property.thumbnail_photo_url,
       property.cover_photo_url,
-      property.cost_per_night,
+      property.cost_per_night*100,
       property.street,
       property.city,
       property.province,
